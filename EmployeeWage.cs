@@ -1,27 +1,27 @@
+using System.Collections;
 namespace Day10Employee
 {
     public class EmplyeeWage : IComputeWage{
         public const int Part_time=1;
         public const int Full_time=2;
-        private int numOfCompany = 0;
+        
 
-        private CompanyEmpWage[] companyEmpWages;
+        private List<CompanyEmpWage> companyEmpWages;
 
      
         public EmplyeeWage(){
-            this.companyEmpWages = new CompanyEmpWage[5];
+            this.companyEmpWages = new List<CompanyEmpWage>();
 
         }
 
         public void Add(String name , int wage,int maxday,int maxhours){
-            companyEmpWages[numOfCompany]= new CompanyEmpWage(name,wage,maxhours,maxday);
-            numOfCompany++;
+            companyEmpWages.Add( new CompanyEmpWage(name,wage,maxhours,maxday));
+         
         }
         public void Computewage(){
-            for(int i =0 ;i < numOfCompany;i++){
+           for (int i =0 ; i <companyEmpWages.Count;i++){
                 companyEmpWages[i].setwage(this.computewage(companyEmpWages[i]));
-                Console.WriteLine(companyEmpWages[i].toString());
-            }
+           }
         }
 
         private int computewage(CompanyEmpWage companyEmpWage){
