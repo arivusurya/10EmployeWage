@@ -50,6 +50,9 @@ namespace Day10Employee
             return totalEmpHrs * companyEmpWage.wagePerhour;       
         
         }
-       
+        public int gettotalWage(string Company_name){
+            CompanyEmpWage obj = companyEmpWages.FirstOrDefault(x=>x.Companyname == Company_name);
+           return obj.TotalWages;
+        }
     }
 }
